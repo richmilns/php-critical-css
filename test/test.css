@@ -1,0 +1,24 @@
+.test1 {
+    /*! critical */
+    color: red;
+}
+
+.test3 {
+    color: blue;
+}
+
+@media screen and (min-width:200px) {
+    .test4 {
+        color: yellow;
+    }
+
+    .test5 {
+        /* !critical */
+        color: purple;
+    }
+}
+
+.test2 {
+    /* This is a comment */
+    color: green;
+}

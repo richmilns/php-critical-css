@@ -1,0 +1,38 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * CriticalCSS Command Line Interface (CLI)
+ */
+
+declare(strict_types=1);
+
+if (!isset($_composer_autoload_path)) {
+    $composerPaths = [
+        __DIR__ . '/../../../autoload.php', // composer dependency
+        __DIR__ . '/../vendor/autoload.php', // stand-alone package
+    ];
+    foreach ($composerPaths as $composerPath) {
+        if (is_file($composerPath)) {
+            $composerManualAutoloadPath = $composerPath;
+        }
+    }
+}
+
+require_once $_composer_autoload_path ?? $composerManualAutoloadPath;
+
+use CriticalCSS\Parser as Parser;
+
+$args = $argv ?? [];
+$cssFile = $argv[1] ?? null;
+if ($cssFile === null) {
+    print 'No CSS file specified' . PHP_EOL;
+    exit;
+}
+try {
+    $criticalParser = new Parser($cssFile);
+    $criticalParser->parse();
+    $criticalParser->output();
+} catch (Exception $exception) {
+    print $exception->getMessage() . PHP_EOL;
+}

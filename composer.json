@@ -1,0 +1,32 @@
+{
+    "name": "richmilns/php-css-parser",
+    "type": "library",
+    "description": "Parser for separating critical CSS styles",
+    "keywords": [
+        "parser",
+        "css",
+        "stylesheet",
+        "critical"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rich Milns"
+        }
+    ],
+    "require": {
+        "sabberworm/php-css-parser": "^8.4",
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "spatie/ray": "^1.37"
+    },
+    "autoload": {
+        "psr-4": {
+            "CriticalCSS\\": "src/"
+        }
+    },
+    "bin": [
+        "bin/critical-css"
+    ]
+}
