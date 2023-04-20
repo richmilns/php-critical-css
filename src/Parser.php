@@ -140,6 +140,9 @@ class Parser
      */
     public function rulesAreCritical($item): bool
     {
+        if (!method_exists($item, 'getRules')) {
+            return false;
+        }
         $itemIsCritical = false;
         foreach ($item->getRules() as $rule) {
             if ($itemIsCritical === true) {
